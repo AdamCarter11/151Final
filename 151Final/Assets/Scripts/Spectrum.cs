@@ -24,7 +24,7 @@ public class Spectrum : MonoBehaviour
         if (audioSpectrumVar != null && audioSpectrumVar.Length > 0){
             //we can set it to zero cause it's in update and the audioSpectrumVar is constantly changing
             specVal = audioSpectrumVar[0] * 100;
-            print(specVal);
+            //print(specVal);
         }
     }
 }

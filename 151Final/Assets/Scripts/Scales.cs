@@ -7,6 +7,7 @@ public class Scales : AudioEvents {
 
     public Vector3 beatScale;
 	public Vector3 restScale;
+    [SerializeField] GameObject objectToSpawn, spawnPoint;
 
 	private IEnumerator MoveToScale(Vector3 _target)
 	{
@@ -39,6 +40,11 @@ public class Scales : AudioEvents {
 	public override void OnBeat()
 	{
 		base.OnBeat();
+        GameObject spawnedObject = Instantiate(objectToSpawn, spawnPoint.transform.position, Quaternion.identity);
+        spawnedObject.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector3(-1000,0,0));
+        Destroy(spawnedObject,2f);
+
+        //Player.movePoints++;
         
 		StopCoroutine("MoveToScale");
 		StartCoroutine("MoveToScale", beatScale);
