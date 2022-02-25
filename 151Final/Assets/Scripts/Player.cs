@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
+using UnityOSC;
 
 public class Player : MonoBehaviour
 {
@@ -20,10 +23,19 @@ public class Player : MonoBehaviour
 
     private int movePoints;
 
+    //OSC stuff
+    Dictionary<string, ServerLog> servers = new Dictionary<string, ServerLog>();
+    public Text countText;
+    private int count=0, powerUpCount = 0;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         extraJumps = resetJumps;
+
+        //OSC stuff
+        OSCHandler.Instance.Init();
+        OSCHandler.Instance.SendMessageToClient("pd","/unity/bg", count);
     }
 
     void Update()
@@ -67,6 +79,18 @@ public class Player : MonoBehaviour
         moveInput = Input.GetAxis("Horizontal");
 
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+        
+        OSCHandler.Instance.UpdateLogs();
+        Dictionary<string, ServerLog> servers = new Dictionary<string, ServerLog>();
+        servers = OSCHandler.Instance.Servers;
+
+        foreach(KeyValuePair<string, ServerLog> item in servers){
+            if(item.Value.log.Count > 0){
+                int lastPacketIndex = item.Value.packets.Count-1;
+                countText.text = item.Value.packets [lastPacketIndex].Address.ToString ();
+				countText.text += item.Value.packets [lastPacketIndex].Data [0].ToString ();
+            }
+        }
     }
     void Flip(){
         facingRight = !facingRight;
