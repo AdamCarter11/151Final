@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9e713a05f1c096408f2962a01980652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerAmount: 5
+  triggerAmount: 3.5
   timeForStep: 0.15
   beatTime: 0.05
   smoothTime: 2
@@ -374,6 +374,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthText: {fileID: 564337344}
   target: {fileID: 1292800895}
+  bossMusic: {fileID: 8300000, guid: b39e87c9b164a04478c476b04e132de3, type: 3}
+  backgroundMusic: {fileID: 8300000, guid: 5e509a3d63a853746a9cd797d0ba9a81, type: 3}
+  audioSourceVal: {fileID: 519420030}
 --- !u!61 &319138541
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -436,14 +439,14 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f37c29a077454424293dd49a77923885, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5e509a3d63a853746a9cd797d0ba9a81, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.397
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -576,7 +579,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -8, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -899,7 +902,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1292800891}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3, z: 0}
+  m_LocalPosition: {x: -8, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 82033486}

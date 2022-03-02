@@ -9,7 +9,11 @@ public class BossScript : MonoBehaviour
     private int health = 10;
     [SerializeField] private Text healthText;
     [SerializeField] private Transform target;
-
+    public static float activeDist = 9.5f;
+    [SerializeField] private AudioClip bossMusic, backgroundMusic;
+    [SerializeField] private AudioSource audioSourceVal;
+    public static float dist;
+    private bool changeMusic = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +24,21 @@ public class BossScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print(Spectrum.specVal);
         if(target != null){
             Vector2 dir = new Vector2(target.position.x - transform.position.x, target.position.y - transform.position.y);
             transform.up = dir;
+            dist = Vector2.Distance(target.transform.position, transform.position);
+            if(dist < activeDist && changeMusic){
+                audioSourceVal.clip = bossMusic;
+                audioSourceVal.Play();
+                changeMusic = false;
+            }
+            else if(dist >= activeDist && changeMusic == false){
+                audioSourceVal.clip = backgroundMusic;
+                audioSourceVal.Play();
+                changeMusic = true;
+            }
         }
         
         if(Spectrum.specVal >= 5){

@@ -40,9 +40,11 @@ public class Scales : AudioEvents {
 	public override void OnBeat()
 	{
 		base.OnBeat();
-        GameObject spawnedObject = Instantiate(objectToSpawn, spawnPoint.transform.position, Quaternion.identity);
-        spawnedObject.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector3(-1000,0,0));
-        Destroy(spawnedObject,2f);
+        if(BossScript.dist < BossScript.activeDist){
+            GameObject spawnedObject = Instantiate(objectToSpawn, spawnPoint.transform.position, Quaternion.identity);
+            spawnedObject.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector3(-700,0,0));
+            Destroy(spawnedObject,2f);
+        }
 
         //Player.movePoints++;
         
