@@ -22,6 +22,7 @@ public class BossScript : MonoBehaviour
         //StartCoroutine(changeSize());
     }
 
+    
     // Update is called once per frame
     void Update()
     {
@@ -32,18 +33,26 @@ public class BossScript : MonoBehaviour
             transform.up = dir;
             dist = Vector2.Distance(target.transform.position, transform.position);
             if(dist < activeDist && changeMusic){
+                /*
                 audioSourceVal.clip = bossMusic;
                 audioSourceVal.Play();
                 changeMusic = false;
+                */
+                AudioManager.instance.SwapTrack(bossMusic);
+                changeMusic = false;
             }
             else if(dist >= activeDist && changeMusic == false){
+                /*
                 audioSourceVal.clip = backgroundMusic;
                 audioSourceVal.Play();
+                changeMusic = true;
+                */
+                AudioManager.instance.SwapTrack(backgroundMusic);
                 changeMusic = true;
             }
         }
         
-        if(Spectrum.specVal >= 5){
+        if(Spectrum.specVal >= 10){
             health++;
             //healthText.text = "Boss health: " + health;
         }
@@ -58,6 +67,10 @@ public class BossScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("sword")){
             health--;
+        }
+        if(other.gameObject.CompareTag("playerBullet")){
+            health--;
+            Destroy(other.gameObject);
         }
     }
     /*
