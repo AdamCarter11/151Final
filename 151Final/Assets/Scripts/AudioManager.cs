@@ -7,7 +7,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip defaultSong;
     public static AudioManager instance;
     private AudioSource track1, track2;
-    private bool isPlayingTrack;
+    public bool isPlayingTrack;
 
     private void Awake() {
         if(instance == null)

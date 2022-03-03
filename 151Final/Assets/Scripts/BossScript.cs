@@ -52,7 +52,7 @@ public class BossScript : MonoBehaviour
             }
         }
         
-        if(Spectrum.specVal >= 10){
+        if(Spectrum.specVal >= 10 && AudioManager.instance.isPlayingTrack){
             health++;
             //healthText.text = "Boss health: " + health;
         }

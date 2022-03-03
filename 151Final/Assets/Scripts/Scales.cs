@@ -40,11 +40,11 @@ public class Scales : AudioEvents {
 	public override void OnBeat()
 	{
 		base.OnBeat();
-        if(BossScript.dist < BossScript.activeDist){
-
+        if(BossScript.dist < BossScript.activeDist && AudioManager.instance.isPlayingTrack){
+ 
             //calculates bullet angle
             Vector2 dirToTarget =  targetPos.transform.position - spawnPoint.transform.position;
-            print(dirToTarget);
+            //print(dirToTarget);
             float angle = Vector3.Angle(Vector3.right, dirToTarget);
             if(targetPos.transform.position.y < spawnPoint.transform.position.y) { angle *= -1; }
             Quaternion bulletRot = Quaternion.AngleAxis(angle, Vector3.forward);

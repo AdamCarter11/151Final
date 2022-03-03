@@ -7,6 +7,7 @@ TagManager:
   - bossBullet
   - sword
   - playerBullet
+  - Shield
   layers:
   - Default
   - TransparentFX

@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     private bool canFire = true;
     private int movePoints;
     private int tempVar = 0;
+    private bool isShielded = false;
 
     //OSC stuff
     Dictionary<string, ServerLog> servers = new Dictionary<string, ServerLog>();
@@ -132,11 +133,21 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("bossBullet")){
-            health--;
-            playerHealthText.text = "Player Health: " + health;
+            if(isShielded){
+                isShielded = false;
+            }
+            else{
+                health--;
+                playerHealthText.text = "Player Health: " + health;
+            }
             Destroy(other.gameObject);
             ParticleSystem spawnedPs = Instantiate(ps, transform.position, Quaternion.identity);
             Destroy(spawnedPs, 1);
+        }
+        if(other.gameObject.CompareTag("Shield")){
+            Destroy(other.gameObject);
+            ShieldPowerUp.objectSpawned = false;
+            isShielded = true;
         }
     }
 }
