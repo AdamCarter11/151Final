@@ -14,6 +14,7 @@ public class BossScript : MonoBehaviour
     [SerializeField] private AudioSource audioSourceVal;
     public static float dist;
     private bool changeMusic = true;
+    //[HideInInspector] public static Vector2 dirToShoot;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,9 +25,10 @@ public class BossScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(Spectrum.specVal);
+        //print(Spectrum.specVal);
         if(target != null){
             Vector2 dir = new Vector2(target.position.x - transform.position.x, target.position.y - transform.position.y);
+            //dirToShoot = dir;
             transform.up = dir;
             dist = Vector2.Distance(target.transform.position, transform.position);
             if(dist < activeDist && changeMusic){

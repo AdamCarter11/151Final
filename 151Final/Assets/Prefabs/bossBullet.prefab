@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7167861977022158107}
   - component: {fileID: 6675423299760815149}
   - component: {fileID: 6345130454484353254}
+  - component: {fileID: -4531541360874052761}
   m_Layer: 0
   m_Name: bossBullet
   m_TagString: bossBullet
@@ -121,3 +122,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-4531541360874052761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8098763902136173006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15cadc60d8a598248bed626b5fa1e125, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpeed: 15
