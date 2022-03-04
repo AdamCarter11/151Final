@@ -8,6 +8,7 @@ TagManager:
   - sword
   - playerBullet
   - Shield
+  - Ground
   layers:
   - Default
   - TransparentFX

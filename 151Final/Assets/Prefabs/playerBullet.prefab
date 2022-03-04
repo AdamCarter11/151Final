@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2486529978373373275}
   - component: {fileID: 2012322928885581126}
-  - component: {fileID: 7519858504665364482}
   - component: {fileID: 2409498459390115848}
   - component: {fileID: 1845274054998939296}
+  - component: {fileID: 2404096846533386533}
+  - component: {fileID: -788585273467667502}
   m_Layer: 0
   m_Name: playerBullet
   m_TagString: playerBullet
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 8017539238077761912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -17.503937, y: -1.7501278, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 70f94056045346648994451247e8ef66, type: 3}
-  m_Color: {r: 0, g: 0.2739539, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 6e27cae963bfa1c40b61d1f832cb3931, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -85,22 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &7519858504665364482
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8017539238077761912}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
-  m_Direction: 0
 --- !u!50 &2409498459390115848
 Rigidbody2D:
   serializedVersion: 4
@@ -135,3 +120,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 15
+--- !u!58 &2404096846533386533
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8017539238077761912}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!114 &-788585273467667502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8017539238077761912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84272c8576ce5c94a953d202090521c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ps: {fileID: 418617743175870557, guid: 108e9df77c0d6724f829d484cfb33f66, type: 3}

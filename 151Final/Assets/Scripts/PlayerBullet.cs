@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletScript : MonoBehaviour
+public class PlayerBullet : MonoBehaviour
 {
-    [SerializeField] private float bulletSpeed;
     [SerializeField] ParticleSystem ps;
     // Start is called before the first frame update
     void Start()
@@ -15,7 +14,7 @@ public class BulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(transform.right * bulletSpeed * Time.deltaTime, Space.World);
+        
     }
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.CompareTag("Ground")){

@@ -44,6 +44,9 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if(transform.position.y < -15){
+            transform.position = new Vector2(-15, 3);
+        }
         //print(movePoints);
         if(Spectrum.specVal >= 5){
             movePoints++;
