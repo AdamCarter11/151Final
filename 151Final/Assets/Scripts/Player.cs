@@ -163,7 +163,7 @@ public class Player : MonoBehaviour
             Destroy(other.gameObject);
             ShieldPowerUp.objectSpawned = false;
             isShielded = true;
-            OSCHandler.Instance.SendMessageToClient("pd","/unity/trigger", 1);
+            OSCHandler.Instance.SendMessageToClient("pd","/unity/shield", 1);
         }
     }
 }

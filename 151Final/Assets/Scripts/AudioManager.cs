@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
     private AudioSource track1, track2;
     public bool isPlayingTrack;
+    private bool checker = true;
 
     private void Awake() {
         if(instance == null)
@@ -22,7 +23,13 @@ public class AudioManager : MonoBehaviour
 
         SwapTrack(defaultSong);
     }
-
+    private void Update() {
+        if(Scales.playerWin && checker){
+            //print("audio manager");
+            SwapTrack(defaultSong);
+            checker = false;
+        }
+    }
     public void SwapTrack(AudioClip newClip){
         StopAllCoroutines();
         StartCoroutine(FadeTrack(newClip));
