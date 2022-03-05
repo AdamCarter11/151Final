@@ -11,6 +11,7 @@ public class Colors : AudioEvents
 
 	private int m_randomIndx;
 	private SpriteRenderer m_img;
+    [SerializeField] private Animator anim;
 
     private IEnumerator MoveToColor(Color _target)
 	{
@@ -44,7 +45,7 @@ public class Colors : AudioEvents
 
 		if (beat) return;
 
-		m_img.color = Color.Lerp(m_img.color, restColor, smoothTime * Time.deltaTime);
+		//m_img.color = Color.Lerp(m_img.color, restColor, smoothTime * Time.deltaTime);
 	}
 
 	public override void OnBeat()
@@ -53,8 +54,10 @@ public class Colors : AudioEvents
 
 		Color _c = RandomColor();
 
-		StopCoroutine("MoveToColor");
-		StartCoroutine("MoveToColor", _c);
+		//StopCoroutine("MoveToColor");
+        anim.ResetTrigger("PlayAnim");
+		//StartCoroutine("MoveToColor", _c);
+        anim.SetTrigger("PlayAnim");
 	}
 
 	private void Start()
