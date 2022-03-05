@@ -11,11 +11,17 @@ public class CameraController : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
 
     private void Start() {
-        offset = transform.position - target.position;
+        if(target != null){
+            offset = transform.position - target.position;
+        }
+        
     }
 
     private void LateUpdate() {
-        Vector3 desiredPos = target.position + offset;
-        transform.position = Vector3.SmoothDamp(transform.position, desiredPos, ref velocity, smoothSpeed);
+        if(target != null){
+            Vector3 desiredPos = target.position + offset;
+            transform.position = Vector3.SmoothDamp(transform.position, desiredPos, ref velocity, smoothSpeed);
+        }
+        
     }
 }

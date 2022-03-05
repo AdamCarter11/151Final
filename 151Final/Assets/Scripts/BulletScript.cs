@@ -19,14 +19,15 @@ public class BulletScript : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.CompareTag("Ground")){
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("Ground")){
-            Destroy(gameObject);
             ParticleSystem spawnedPs = Instantiate(ps, transform.position, Quaternion.identity);
-            Destroy(spawnedPs, 1);
+            //Destroy(spawnedPs, 1);
+            Destroy(gameObject);
+            
         }
     }
 }

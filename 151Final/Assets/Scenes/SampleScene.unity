@@ -504,7 +504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9e713a05f1c096408f2962a01980652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerAmount: 8
+  triggerAmount: 4
   timeForStep: 0.15
   beatTime: 0.05
   smoothTime: 2

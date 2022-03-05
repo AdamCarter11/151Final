@@ -24,13 +24,13 @@ public class Player : MonoBehaviour
     private bool facingRight = false;
     private bool canFire = true;
     private int movePoints;
-    private int tempVar = 0;
+    //private int tempVar = 0;
     private bool isShielded = false;
 
     //OSC stuff
     Dictionary<string, ServerLog> servers = new Dictionary<string, ServerLog>();
     public Text countText;
-    private int count=0, powerUpCount = 0;
+    //private int count=0, powerUpCount = 0;
 
     void Start()
     {
@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
 
         //OSC stuff
         OSCHandler.Instance.Init();
-        OSCHandler.Instance.SendMessageToClient("pd","/unity/bg", count);
+        //OSCHandler.Instance.SendMessageToClient("pd","/unity/bg", count);
     }
 
     void Update()
@@ -63,10 +63,12 @@ public class Player : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Space) && extraJumps > 0){
             rb.velocity = Vector2.up * jumpForce;
+            OSCHandler.Instance.SendMessageToClient("pd","/unity/powerup", 1);
             extraJumps--;
         }
         else if (Input.GetKeyDown(KeyCode.Space) && extraJumps == 0 && isGrounded){
             rb.velocity = Vector2.up * jumpForce;
+            OSCHandler.Instance.SendMessageToClient("pd","/unity/powerup", 1);
         }
 
         if(Input.GetKey(KeyCode.S)){
@@ -115,6 +117,15 @@ public class Player : MonoBehaviour
         if(Input.GetMouseButtonDown(0) && canFire){
             Fire();
         }
+
+        if(Scales.bossShot){
+            OSCHandler.Instance.SendMessageToClient("pd","/unity/bg", 1);
+            Scales.bossShot = false;
+        }
+        if(BossScript.bossDead){
+            OSCHandler.Instance.SendMessageToClient("pd","/unity/longExpl", 1);
+            BossScript.bossDead = false;
+        }
     }
 
     //function to fire the bullet
@@ -145,12 +156,14 @@ public class Player : MonoBehaviour
             }
             Destroy(other.gameObject);
             ParticleSystem spawnedPs = Instantiate(ps, transform.position, Quaternion.identity);
+            OSCHandler.Instance.SendMessageToClient("pd","/unity/checkpoint", 1);
             Destroy(spawnedPs, 1);
         }
         if(other.gameObject.CompareTag("Shield")){
             Destroy(other.gameObject);
             ShieldPowerUp.objectSpawned = false;
             isShielded = true;
+            OSCHandler.Instance.SendMessageToClient("pd","/unity/trigger", 1);
         }
     }
 }

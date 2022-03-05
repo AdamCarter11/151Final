@@ -49,8 +49,8 @@ public class AudioManager : MonoBehaviour
             track1.clip = newClip;
             track1.Play();
             while(timeElapsed < timeToFade){
-                track1.volume = Mathf.Lerp(0,1,timeElapsed/timeToFade);
-                track2.volume = Mathf.Lerp(1,0,timeElapsed/timeToFade);
+                track1.volume = Mathf.Lerp(0,.5f,timeElapsed/timeToFade);
+                track2.volume = Mathf.Lerp(.5f,0,timeElapsed/timeToFade);
                 timeElapsed+= Time.deltaTime;
                 
                 yield return null;

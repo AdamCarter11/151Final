@@ -14,6 +14,7 @@ public class BossScript : MonoBehaviour
     [SerializeField] private AudioSource audioSourceVal;
     public static float dist;
     private bool changeMusic = true;
+    public static bool bossDead = false;
     //[HideInInspector] public static Vector2 dirToShoot;
     // Start is called before the first frame update
     void Start()
@@ -59,6 +60,8 @@ public class BossScript : MonoBehaviour
         
         healthText.text = "Boss health: " + health;
         if(health <= 0){
+            bossDead = true;
+            Scales.playerWin = true;
             Destroy(gameObject);
         }
         //print(objectScale);
