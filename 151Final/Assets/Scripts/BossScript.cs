@@ -15,11 +15,14 @@ public class BossScript : MonoBehaviour
     public static float dist;
     private bool changeMusic = true;
     public static bool bossDead = false;
+    private Animator anim;
+
     //[HideInInspector] public static Vector2 dirToShoot;
     // Start is called before the first frame update
     void Start()
     {
         objectScale = transform.localScale;
+        anim = GetComponent<Animator>();
         //StartCoroutine(changeSize());
     }
 
@@ -28,7 +31,7 @@ public class BossScript : MonoBehaviour
     void Update()
     {
         //print(Spectrum.specVal);
-        if(target != null){
+        if(target != null && !Scales.playerWin){
             Vector2 dir = new Vector2(target.position.x - transform.position.x, target.position.y - transform.position.y);
             //dirToShoot = dir;
             transform.up = dir;
@@ -62,7 +65,9 @@ public class BossScript : MonoBehaviour
         if(health <= 0){
             bossDead = true;
             Scales.playerWin = true;
-            Destroy(gameObject);
+            transform.rotation = Quaternion.identity;
+            anim.Play("Explosion");
+            Destroy(gameObject, .7f);
         }
         //print(objectScale);
         

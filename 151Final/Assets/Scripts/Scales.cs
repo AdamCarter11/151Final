@@ -34,7 +34,8 @@ public class Scales : AudioEvents {
 
 		if (beat) return;
 
-		transform.localScale = Vector3.Lerp(transform.localScale, restScale, smoothTime * Time.deltaTime);
+        if(!Scales.playerWin)
+		    transform.localScale = Vector3.Lerp(transform.localScale, restScale, smoothTime * Time.deltaTime);
 	}
 
 	public override void OnBeat()
