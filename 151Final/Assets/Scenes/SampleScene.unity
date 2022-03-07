@@ -2873,7 +2873,7 @@ MonoBehaviour:
   jumpForce: 12
   checkRadius: 0.7
   resetJumps: 2
-  health: 10
+  health: 30
   groundCheck: {fileID: 1142593484}
   whatIsGround:
     serializedVersion: 2
@@ -3787,7 +3787,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Player health: 10'
+  m_Text: 'Player health: 30'
 --- !u!222 &1829685381
 CanvasRenderer:
   m_ObjectHideFlags: 0
